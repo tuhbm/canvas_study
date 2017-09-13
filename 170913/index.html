@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>캔버스 시작</title>
+</head>
+<body>
+<canvas id="canvas0" width="500" height="500"></canvas>
+<canvas id="canvas1" width="300" height="200"></canvas>
+<canvas id="canvas2" width="500" height="500"></canvas>
+<canvas id="canvas3" width="500" height="500"></canvas>
+
+<script>
+    var canvas1 = document.getElementById("canvas1");
+    var context = canvas1.getContext("2d");
+    context.fillRect(0, 0 , 150, 100);
+    context.fillText("Hello, Canvas!", 155, 110);
+    context.beginPath();
+    context.moveTo(0, 100);
+    context.lineTo(300, 100);
+    context.moveTo(150, 0);
+    context.lineTo(150, 200);
+
+    context.rect(0, 0, 300, 200);
+    context.stroke();
+    context.closePath();
+
+    var canvas2 = document.getElementById("canvas2");
+    var cx1 = canvas2.getContext("2d");
+    cx1.strokeRect(20, 20, 100, 50);
+    cx1.fillRect(20, 20, 100, 50);
+    cx1.clearRect(0, 0, canvas2.width, canvas2.height);
+
+    var canvas3 = document.getElementById("canvas3");
+    var cx2 = canvas3.getContext("2d");
+    var image1 = new Image();
+    image1.onload = function(){
+      cx2.drawImage(image1, 0, 0, canvas3.width, canvas3.height);
+    };
+    image1.src = "../img/img-owl.png";
+
+    var canvas = document.getElementById("canvas0");
+    var cx = canvas.getContext("2d");
+    cx.beginPath();
+    cx.moveTo(0,0);
+//    cx.quadraticCurveTo(50, 100, 100, 0);
+    cx.bezierCurveTo(0 , 100, 100, 0 ,100 ,100);
+    cx.stroke();
+
+</script>
+</body>
+</html>
